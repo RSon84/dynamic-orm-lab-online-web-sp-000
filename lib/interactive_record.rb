@@ -27,9 +27,17 @@ class InteractiveRecord
     end
   end
 
-  def self.find_by_name(name)
-    sql = "SELECT * FROM #{self.table_name}
-    WHERE #{hash.keys[0].to_s} = #{hash.values[0].to_s}'"
+def table_name_for_insert
+  self.class.table_name
+end
+
+def col_names_for_insert
+  self.class.column_names.delete_if {|col| col == "id"}.join(", ")
+end
+
+  # def self.find_by_name(name)
+  #   sql = "SELECT * FROM #{self.table_name}
+  #   WHERE #{hash.keys[0].to_s} = #{hash.values[0].to_s}'"
 
 
 
